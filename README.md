@@ -11,23 +11,23 @@ ROOT_DIR="/lizardfs/salehi/crispr2"
 
 # Loop through all subdirectories in the root directory
 for DIR in "$ROOT_DIR"/*/; do
-          # Enter each subdirectory
-            cd "$DIR" || exit
-              
-              # Find the .fa.gz file
-                FILE=$(find . -name "*.fa.gz" -print -quit)
-                  
-                  if [[ -n "$FILE" ]]; then
-                              # Get the base name without extension
-                                  BASENAME=$(basename "$FILE" .fa.gz)
-                                      
-                                      # Gunzip the file while keeping the original and index it
-                                          gunzip -c "$FILE" > "$BASENAME.fa"
-                                              samtools faidx "$BASENAME.fa"
-                                                else
-                                                            echo "No .fa.gz file found in $DIR"
-                                                              fi
-                                                      done
+    # Enter each subdirectory
+    cd "$DIR" || exit
+    
+    # Find the .fa.gz file
+    FILE=$(find . -name "*.fa.gz" -print -quit)
+    
+    if [[ -n "$FILE" ]]; then
+        # Get the base name without extension
+        BASENAME=$(basename "$FILE" .fa.gz)
+        
+        # Gunzip the file while keeping the original and index it
+        gunzip -c "$FILE" > "$BASENAME.fa"
+        samtools faidx "$BASENAME.fa"
+    else
+        echo "No .fa.gz file found in $DIR"
+    fi
+done
 ```
 
 ## Second step
