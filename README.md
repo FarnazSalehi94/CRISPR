@@ -7,7 +7,7 @@
 #!/bin/bash
 
 # Root directory where the individual folders are located
-ROOT_DIR="/lizardfs/salehi/crispr2"
+ROOT_DIR="/lizardfs/salehi/crispr"
 
 # Loop through all subdirectories in the root directory
 for DIR in "$ROOT_DIR"/*/; do
@@ -67,7 +67,7 @@ Our Target sequence is ```CTAACAGTTGCTTTTATCACNGG``` .
 ```
 #!/bin/bash
 
-ROOT_DIR="/lizardfs/salehi/crispr2"
+ROOT_DIR="/lizardfs/salehi/crispr"
 
 for DIR in "$ROOT_DIR"/*/; do
     cd "$DIR" || continue  # Skip if cd fails
@@ -98,7 +98,7 @@ The output is a matix showing the frequency of interested sequnces with 5 or les
 #!/bin/bash
 
 # Define the directory containing the files
-dir="/lizardfs/salehi/crispr2"
+dir="/lizardfs/salehi/crispr"
 
 # Process all relevant files and merge them
 awk '
