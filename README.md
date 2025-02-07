@@ -52,7 +52,7 @@ for DIR in "$ROOT_DIR"/*/; do
     BASENAME=$(basename "$DIR")
 
     # Run wfmash using sbatch
-    sbatch -p workers -c 48 --wrap "wfmash ${DIR}${BASENAME}.fa $REFERENCE_FA  > ${DIR}${BASENAME}-grch38.paf"
+    sbatch -p workers -c 48 --wrap "wfmash -t 16 ${DIR}${BASENAME}.fa $REFERENCE_FA  -m -f > ${DIR}${BASENAME}-grch38.paf"
 done
 ```
 
