@@ -39,10 +39,10 @@ In here, we do map a set of query sequences against a reference genome using ```
 #!/bin/bash
 
 # Root directory where the individual folders are located
-ROOT_DIR="/lizardfs/salehi/crispr2"
+ROOT_DIR="/lizardfs/salehi/crispr"
 
 # Reference fasta file
-REFERENCE_FA="/lizardfs/salehi/crispr2/grch38.fa"
+REFERENCE_FA="/lizardfs/salehi/crispr/grch38.fa"
 
 # Loop through all subdirectories in the root directory
 for DIR in "$ROOT_DIR"/*/; do
@@ -52,7 +52,7 @@ for DIR in "$ROOT_DIR"/*/; do
     BASENAME=$(basename "$DIR")
 
     # Run wfmash using sbatch
-    sbatch -p workers -c 48 --wrap "wfmash $REFERENCE_FA ${DIR}${BASENAME}.fa > ${DIR}${BASENAME}-grch38.paf"
+    sbatch -p workers -c 48 --wrap "wfmash ${DIR}${BASENAME}.fa $REFERENCE_FA  > ${DIR}${BASENAME}-grch38.paf"
 done
 ```
 
